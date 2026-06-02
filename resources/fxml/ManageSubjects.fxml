@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1200.0"
+	styleClass="pad" xmlns="http://javafx.com/javafx/24.0.1"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="controller.ManageSubjectsController"
+	stylesheets="@../css/styles.css">
+	<children>
+		<VBox spacing="10" AnchorPane.leftAnchor="8.0"
+			AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="8.0"
+			AnchorPane.bottomAnchor="8.0">
+			<Label styleClass="heading" text="Manage Subjects" />
+
+			<!-- Semester filter row -->
+			<HBox alignment="CENTER_LEFT" spacing="8">
+				<Label text="Show semester:" />
+				<ComboBox fx:id="cmbFilterSem" prefWidth="120"
+					promptText="Semester" />
+				<Button onAction="#onRefresh" text="Refresh"
+					styleClass="btn-primary" />
+				<Region HBox.hgrow="ALWAYS" />
+				<Label fx:id="lblStatus" text="" />
+			</HBox>
+
+			<!-- Editable table -->
+			<TableView fx:id="tblSubjects" editable="true"
+				prefHeight="260" VBox.vgrow="ALWAYS">
+				<columns>
+					<TableColumn fx:id="colId" prefWidth="60" text="ID" />
+					<TableColumn fx:id="colCode" prefWidth="120"
+						text="Code" />
+					<TableColumn fx:id="colName" prefWidth="220"
+						text="Name" />
+					<TableColumn fx:id="colSem" prefWidth="100"
+						text="Semester" />
+					<TableColumn fx:id="colDept" prefWidth="180"
+						text="Department" />
+				</columns>
+			</TableView>
+
+			<!-- Form to add subjects (inputs grow; buttons fixed min width) -->
+			<HBox spacing="8" alignment="CENTER_LEFT">
+				<!-- Make Code and Name moderately sized (not full hog) so Semester fits -->
+				<TextField fx:id="txtCode" promptText="Code"
+					HBox.hgrow="ALWAYS" maxWidth="220" />
+				<TextField fx:id="txtName" promptText="Name"
+					HBox.hgrow="ALWAYS" maxWidth="360" />
+
+				<!-- Semester combobox gets stable width so prompt/text is always visible -->
+				<ComboBox fx:id="cmbAddSem" promptText="Semester"
+					prefWidth="160" minWidth="140" />
+
+				<!-- Department expands but left with reasonable room -->
+				<TextField fx:id="txtDepartment"
+					promptText="Department (optional)" HBox.hgrow="ALWAYS"
+					maxWidth="320" />
+
+				<!-- spacer pushes buttons to the right -->
+				<Region HBox.hgrow="ALWAYS" />
+
+				<!-- Action buttons: fixed min width, styled via styles.css/btn-* classes -->
+				<Button fx:id="btnAdd" onAction="#onAddSubject"
+					text="Add Subject" minWidth="120" styleClass="btn-success" />
+				<Button fx:id="btnDelete" onAction="#onDeleteSubject"
+					text="Delete" minWidth="120" styleClass="btn-danger" />
+				<Button fx:id="btnClear" onAction="#onClearForm" text="Clear"
+					minWidth="120" styleClass="btn-secondary" />
+			</HBox>
+		</VBox>
+	</children>
+</AnchorPane>

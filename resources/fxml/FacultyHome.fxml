@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="720.0" prefWidth="1200.0" spacing="16" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FacultyHomeController" stylesheets="@../css/styles.css" styleClass="app">
+
+    <HBox spacing="16">
+        <VBox spacing="8" styleClass="card" HBox.hgrow="ALWAYS">
+            <Label styleClass="card-title" text="Welcome" />
+            <Label fx:id="lblWelcome" styleClass="card-value" text="—" />
+        </VBox>
+
+        <VBox spacing="8" styleClass="card" HBox.hgrow="ALWAYS">
+            <Label styleClass="card-title" text="Department" />
+            <Label fx:id="lblDepartment" styleClass="card-value" text="—" />
+        </VBox>
+
+        <VBox spacing="8" styleClass="card" HBox.hgrow="ALWAYS">
+            <Label styleClass="card-title" text="Total Students" />
+            <Label fx:id="lblTotalStudents" styleClass="card-value" text="—" />
+        </VBox>
+
+        <VBox spacing="8" styleClass="card" HBox.hgrow="ALWAYS">
+            <Label styleClass="card-title" text="Avg Attendance" />
+            <Label fx:id="lblAvgAttendance" styleClass="card-value" text="—" />
+        </VBox>
+    </HBox>
+
+    <HBox spacing="12" />
+</VBox>

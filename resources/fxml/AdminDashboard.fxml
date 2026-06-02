@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="720.0" prefWidth="1200.0"
+            styleClass="app" stylesheets="@../css/styles.css"
+            xmlns="http://javafx.com/javafx/24.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.AdminController">
+
+    <top>
+        <HBox styleClass="topbar">
+            <Label styleClass="title" text="Admin Console" />
+            <Pane HBox.hgrow="ALWAYS" />
+            <Button onAction="#handleLogout" text="Logout" />
+        </HBox>
+    </top>
+
+    <left>
+        <VBox spacing="12" styleClass="left-menu">
+            <Label text="NAVIGATION" />
+            <Button fx:id="btnHome"            onAction="#showDashboard"      styleClass="button nav-button" text="Dashboard" />
+            <Button fx:id="btnManageStudents"  onAction="#showStudents"       styleClass="button nav-button" text="Students" />
+            <Button fx:id="btnManageFaculty"   onAction="#showFaculty"        styleClass="button nav-button" text="Faculty" />
+            <Button fx:id="btnManageSubjects"  onAction="#showManageSubjects" styleClass="button nav-button" text="Manage Subjects" />
+            <Button fx:id="btnAssignSubjects"  onAction="#showAssignSubjects" styleClass="button nav-button" text="Assign Subjects" />
+
+            <!-- separator between primary nav and utility actions -->
+            <Separator />
+
+            <!-- utility: Create User / Backup DB (implemented in controller) -->
+            <Button text="Create User" onAction="#onCreateUser" styleClass="btn-primary" />
+            <Button text="Backup DB"   onAction="#onBackupDB"   styleClass="btn-secondary" />
+        </VBox>
+    </left>
+
+    <center>
+        <StackPane fx:id="contentArea" styleClass="pad" />
+    </center>
+</BorderPane>

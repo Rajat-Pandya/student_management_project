@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="720.0" prefWidth="1200.0"
+            styleClass="app" stylesheets="@../css/styles.css"
+            xmlns="http://javafx.com/javafx/24.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.FacultyDashboardController">
+
+    <!-- Top bar -->
+    <top>
+        <HBox spacing="12" alignment="CENTER_LEFT" styleClass="topbar">
+            <!-- correct padding: use Insets element -->
+            <padding>
+                <Insets top="12" right="18" bottom="12" left="18"/>
+            </padding>
+
+            <Label styleClass="title" text="Faculty Console" />
+            <Pane HBox.hgrow="ALWAYS" />
+            <Button fx:id="btnLogout" onAction="#handleLogout" text="Logout" styleClass="btn-primary"/>
+        </HBox>
+    </top>
+
+    <!-- Left navigation -->
+    <left>
+        <VBox spacing="12" styleClass="left-menu">
+            <!-- correct padding for VBox -->
+            <padding>
+                <Insets top="12" right="12" bottom="12" left="12"/>
+            </padding>
+
+            <Label text="NAVIGATION" />
+            <Button fx:id="btnHome"               onAction="#showHome"               styleClass="button nav-button" text="Dashboard" />
+            <Button fx:id="btnStudentsAttendance" onAction="#showStudentsAttendance" styleClass="button nav-button" text="Students" />
+            <Button fx:id="btnViewAttendance"     onAction="#showAttendance"        styleClass="button nav-button" text="Attendance" />
+            <Button fx:id="btnAssignMarks"        onAction="#showAssignMarks"       styleClass="button nav-button" text="Assign Marks" />
+            <Button fx:id="btnAssignGrades"       onAction="#showAssignGrades"      styleClass="button nav-button" text="Assign Grades" />
+            <Button fx:id="btnViewMarksheet"      onAction="#showMarksheet"         styleClass="button nav-button" text="Marksheet" />
+        </VBox>
+    </left>
+
+    <!-- Center content area where subviews are loaded -->
+    <center>
+        <StackPane fx:id="contentArea" styleClass="pad">
+            <padding>
+                <Insets top="12" right="12" bottom="12" left="12"/>
+            </padding>
+        </StackPane>
+    </center>
+</BorderPane>

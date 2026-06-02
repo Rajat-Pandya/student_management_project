@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="720.0" prefWidth="1200.0"
+            xmlns="http://javafx.com/javafx/24.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.ViewAttendanceController"
+            stylesheets="@../css/styles.css"
+            styleClass="app">
+
+    <!-- TOP BAR -->
+    <top>
+        <HBox spacing="8" styleClass="topbar">
+            <padding>
+                <Insets top="8" right="8" bottom="8" left="8"/>
+            </padding>
+            <Label styleClass="title" text="View Attendance"/>
+        </HBox>
+    </top>
+
+    <!-- CENTER CONTENT: LEFT = FILTERS + SUMMARY, RIGHT = TABLE -->
+    <center>
+        <HBox spacing="16" styleClass="pad">
+            <padding>
+                <Insets top="12" right="12" bottom="12" left="12"/>
+            </padding>
+
+            <!-- LEFT: FILTERS + SUMMARY -->
+            <VBox spacing="14" prefWidth="360" maxWidth="380">
+                <GridPane hgap="8" vgap="10">
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="30"/>
+                        <ColumnConstraints percentWidth="70"/>
+                    </columnConstraints>
+
+                    <Label text="Semester" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                    <ComboBox fx:id="comboSemester" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                    <Label text="Course" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                    <ComboBox fx:id="comboCourse" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                    <Label text="Subject" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                    <ComboBox fx:id="comboSubject" GridPane.columnIndex="1" GridPane.rowIndex="2" prefWidth="220"/>
+
+                    <Label text="Date" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                    <DatePicker fx:id="datePicker" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+                    <rowConstraints>
+                        <RowConstraints/>
+                        <RowConstraints/>
+                        <RowConstraints/>
+                        <RowConstraints/>
+                    </rowConstraints>
+                </GridPane>
+
+                <HBox spacing="10">
+                    <Button fx:id="btnLoad" text="Load" styleClass="btn-primary" onAction="#handleLoad"/>
+                    <Button fx:id="btnRefreshSubjects" text="Refresh Subjects" styleClass="btn-secondary" onAction="#handleRefreshSubjects"/>
+                </HBox>
+
+                <!-- BIG SUMMARY -->
+                <VBox spacing="8" style="-fx-padding:14; -fx-border-color:#e6e0e0; -fx-background-color:#fafafa; -fx-border-radius:6; -fx-background-radius:6;">
+                    <Label text="Summary" style="-fx-font-size:18px; -fx-font-weight:700; -fx-padding:0 0 6 0;" />
+
+                    <HBox spacing="8" alignment="CENTER_LEFT">
+                        <Label text="Total:" style="-fx-font-size:16px; -fx-font-weight:600;"/>
+                        <Label fx:id="lblTotal" text="0" style="-fx-font-size:18px; -fx-font-weight:800; -fx-text-fill:#333;" />
+                    </HBox>
+
+                    <HBox spacing="8" alignment="CENTER_LEFT">
+                        <Label text="Present:" style="-fx-font-size:15px; -fx-font-weight:600;"/>
+                        <Label fx:id="lblPresent" text="0" style="-fx-font-size:17px; -fx-font-weight:800; -fx-text-fill:green;" />
+                    </HBox>
+
+                    <HBox spacing="8" alignment="CENTER_LEFT">
+                        <Label text="Absent:" style="-fx-font-size:15px; -fx-font-weight:600;"/>
+                        <Label fx:id="lblAbsent" text="0" style="-fx-font-size:17px; -fx-font-weight:800; -fx-text-fill:red;" />
+                    </HBox>
+                </VBox>
+
+                <Region VBox.vgrow="ALWAYS"/>
+            </VBox>
+
+            <!-- RIGHT: TABLE (expandable) -->
+            <VBox spacing="8" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS">
+                <HBox spacing="10" alignment="CENTER_RIGHT">
+                    <!-- Removed right-side semester combo — only keep filters -->
+                    <Button text="All" styleClass="btn-secondary" onAction="#filterAll"/>
+                    <Button text="Present" styleClass="btn-success" onAction="#filterPresent"/>
+                    <Button text="Absent" styleClass="btn-danger" onAction="#filterAbsent"/>
+                </HBox>
+
+                <Label text="Students" styleClass="card-title"/>
+                <TableView fx:id="tblStudents" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colId" text="ID" prefWidth="60"/>
+                        <TableColumn fx:id="colName" text="Name" prefWidth="240"/>
+                        <TableColumn fx:id="colRoll" text="Roll No." prefWidth="140"/>
+                        <TableColumn fx:id="colCourse" text="Course" prefWidth="120"/>
+                        <TableColumn fx:id="colSemester" text="Sem" prefWidth="80"/>
+                        <TableColumn fx:id="colStatus" text="Status" prefWidth="120"/>
+                    </columns>
+                </TableView>
+            </VBox>
+        </HBox>
+    </center>
+</BorderPane>

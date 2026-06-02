@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="720.0" prefWidth="1200.0" spacing="16" styleClass="pad" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminHomeController" stylesheets="@../css/styles.css">
+
+    <!-- Stat cards -->
+    <HBox spacing="16">
+        <VBox spacing="8" styleClass="card" HBox.hgrow="ALWAYS">
+            <Label styleClass="card-title" text="Total Students" />
+            <Label fx:id="lblTotalStudents" styleClass="card-value" text="—" />
+        </VBox>
+
+        <VBox spacing="8" styleClass="card" HBox.hgrow="ALWAYS">
+            <Label styleClass="card-title" text="Total Faculty" />
+            <Label fx:id="lblTotalFaculty" styleClass="card-value" text="—" />
+        </VBox>
+
+        <VBox spacing="8" styleClass="card" HBox.hgrow="ALWAYS">
+            <Label styleClass="card-title" text="Average Attendance" />
+            <Label fx:id="lblAvgAttendance" styleClass="card-value" text="—" />
+        </VBox>
+    </HBox>
+
+    <!-- You can add more content below if needed -->
+
+</VBox>
