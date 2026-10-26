@@ -182,7 +182,7 @@ No setup required! The application will automatically create `student_db.db` fil
 After running the application:
 
 - **Username**: `admin`
-- **Password**: `admin123`
+- **Password**: `demo_admin_change_me`
 
 ---
 

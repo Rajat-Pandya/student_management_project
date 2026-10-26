@@ -20,9 +20,9 @@ CREATE TABLE IF NOT EXISTS users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Default admin: username=admin, password=admin123
+-- Default admin: username=admin, password=demo_admin_change_me
 INSERT INTO users (username, password, role) VALUES 
-('admin', '$2a$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/LewY5GyYIq8Z5Q3Ja', 'admin');
+('admin', '$2a$12$/zrTlSIq/09tubgbbtohlOnU9kGDJ8Oj0OaoQVsH6YBsxIxC2wF1y', 'admin');
 
 -- ===========================================
 -- FACULTY TABLE

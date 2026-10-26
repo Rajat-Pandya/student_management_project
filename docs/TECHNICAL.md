@@ -178,7 +178,7 @@ java -cp "bin:lib/*" controller.Main
 - `DB_SQLITE`: SQLite file path
 
 ### Default Credentials
-- **Admin**: username=admin, password=admin123
+- **Admin**: username=admin, password=demo_admin_change_me
 
 ---
 

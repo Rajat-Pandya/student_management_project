@@ -131,9 +131,12 @@ java -cp "bin;lib/*" controller.Main
 
 ### Default Login Credentials
 
+> [!WARNING]
+> **Demo Account Notice:** The default admin account (`admin` / `demo_admin_change_me`) is provided for local demonstration and evaluation only. This credential must be changed immediately before any real or production use.
+
 | Role | Username | Password |
 |------|----------|----------|
-| Admin | admin | admin123 |
+| Admin | admin | demo_admin_change_me |
 | Faculty | (create via admin) | (set during creation) |
 
 ---
