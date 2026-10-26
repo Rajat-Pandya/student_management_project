@@ -57,7 +57,6 @@ The application follows the Model-View-Controller (MVC) architectural pattern:
 ### Database Security
 - Prepared statements for all queries
 - SQL injection prevention
-- Connection pooling
 
 ---
 
@@ -207,7 +206,7 @@ student_management_project/
 
 ## Performance Considerations
 
-1. **Database**: Use connection pooling
+1. **Database**: Direct connections per operation (connection pooling planned)
 2. **UI**: Load data in background threads
 3. **Search**: Implement pagination for large datasets
 4. **Images**: Optimize image assets

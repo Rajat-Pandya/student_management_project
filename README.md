@@ -9,7 +9,7 @@
 
 **A modern, professional JavaFX desktop application for comprehensive educational institution management.**
 
-[Features](#features) • [Installation](#installation) • [Screenshots](#screenshots) • [Architecture](#architecture)
+[Features](#features) • [Installation](#installation) <!-- • [Screenshots](#screenshots) --> • [Architecture](#architecture)
 
 </div>
 
@@ -25,7 +25,7 @@ The **Student Management System** is a feature-rich desktop application built wi
 - **Role-Based Access** - Separate dashboards for Admin and Faculty users
 - **Real-time Analytics** - Dashboard with statistics and data visualization
 - **Secure Authentication** - BCrypt password hashing with automatic rehashing
-- **Export Capabilities** - PDF reports and CSV data export
+- **Export Capabilities** - Print/export marksheets via system print dialog and CSV data export
 - **Multi-Database Support** - Works with MySQL or SQLite
 
 ---
@@ -45,7 +45,7 @@ The **Student Management System** is a feature-rich desktop application built wi
 - **Marks Entry** - Record student marks for assigned subjects
 - **Grade Assignment** - Auto-calculate and assign grades (A+ through F)
 - **Attendance Reports** - View and filter attendance records
-- **Marksheet Generation** - Generate and export student marksheets to PDF
+- **Marksheet Generation** - Generate and print/export student marksheets via system print dialog (saveable to PDF)
 
 ### System Features
 - **Secure Authentication** - BCrypt password hashing with role-based access
@@ -64,7 +64,7 @@ The **Student Management System** is a feature-rich desktop application built wi
 | **GUI Framework** | JavaFX 21 |
 | **Database** | MySQL 8.0+ / SQLite |
 | **Password Hashing** | BCrypt (jBCrypt) |
-| **PDF Export** | Apache PDFBox |
+| **Marksheet Print/Export** | JavaFX Printing API (`javafx.print.PrinterJob`) |
 | **Architecture** | MVC Pattern |
 | **Build** | Eclipse / IntelliJ IDEA |
 
@@ -79,7 +79,6 @@ The **Student Management System** is a feature-rich desktop application built wi
 - **MySQL Connector/J** (for MySQL support)
 - **JavaFX SDK** 21
 - **BCrypt Library** (jBCrypt)
-- **Apache PDFBox** (for PDF export)
 
 ### Database Setup
 
@@ -103,9 +102,15 @@ set DB_USER=root
 set DB_PASSWORD=your_password
 ```
 
-#### Option 2: SQLite (Default)
+#### Option 2: SQLite
 
-No setup required! The application will automatically create `student_db.db` in the project root.
+In the current code, `DatabaseConnection.java` defaults to MySQL (`jdbc:mysql://localhost:3306/student_db`) if the `DB_TYPE` environment variable is unset. To use SQLite for local development, explicitly set the environment variable:
+
+```bash
+set DB_TYPE=SQLITE
+```
+
+(or set `DB_URL=jdbc:sqlite:student_db.db`). When SQLite is configured, the application will automatically create `student_db.db` in the project root.
 
 ### Building & Running
 
@@ -114,7 +119,7 @@ No setup required! The application will automatically create `student_db.db` in 
 1. Import the project into Eclipse
 2. Add JavaFX library to the build path
 3. Add MySQL Connector/J JAR (if using MySQL)
-4. Add jBCrypt and PDFBox JARs to the build path
+4. Add jBCrypt JAR to the build path
 5. Run `src/controller/Main.java`
 
 #### Using Command Line
@@ -233,7 +238,7 @@ The application follows the **Model-View-Controller (MVC)** architectural patter
 ### Data Access Layer
 - DAO classes for database operations
 - Prepared statements for SQL injection prevention
-- Connection pooling and transaction management
+- Raw JDBC operations (direct connection per query; no connection pooling)
 
 ### Utility Layer
 - `DatabaseConnection` - Database connection factory
@@ -243,6 +248,7 @@ The application follows the **Model-View-Controller (MVC)** architectural patter
 
 ---
 
+<!--
 ## Screenshots
 
 <div align="center">
@@ -263,6 +269,7 @@ The application follows the **Model-View-Controller (MVC)** architectural patter
 ![Attendance](screenshots/attendance.png)
 
 </div>
+-->
 
 ---
 
@@ -276,16 +283,20 @@ The application follows the **Model-View-Controller (MVC)** architectural patter
 
 ---
 
-## Future Improvements
+## Known Limitations & Roadmap
 
-- [ ] REST API integration for mobile apps
-- [ ] Email notifications for attendance/grades
-- [ ] Advanced analytics with charts
-- [ ] Student portal for self-service
-- [ ] Multi-language support
-- [ ] Dark/Light theme toggle
-- [ ] Database migration tool
-- [ ] Automated testing suite
+The following technical limitations, architectural gaps, and known discrepancies are tracked for resolution:
+
+- **Schema vs DAO Table Naming Mismatch (GAP-001):** `database/schema.sql` defines tables using plural names (`subjects`, `faculty_subjects`, `attendance_logs`), whereas several Java DAOs query singular names (`subject`, `faculty_subject`, `attendance`). Additionally, `UserDAO` queries column `password_hash`, whereas `schema.sql` defines column `password`.
+- **MySQL Dialect Specifics Breaking SQLite (GAP-002, GAP-003):** `AttendanceDAO.upsert` and `MarksDAO.upsertMark` use MySQL-specific `ON DUPLICATE KEY UPDATE` syntax, which fails on SQLite. Furthermore, runtime date column detection in `ViewAttendanceController` queries MySQL `information_schema.columns`, which is unsupported in SQLite.
+- **Invalid BCrypt Cost in UserDAO (GAP-004):** `UserDAO.createUser` specifies BCrypt cost factor `10000` (valid range is 4–31), causing an `IllegalArgumentException` and fallback to storing plaintext passwords when adding users through `UserDAO`.
+- **Absence of Build Automation (GAP-007):** The project does not currently include a Maven (`pom.xml`) or Gradle (`build.gradle`) configuration; dependencies and builds must be managed via IDE or manual classpath commands.
+- **Unreferenced Utility Classes (GAP-006):** Standalone utility modules (`AnalyticsUtil`, `ValidationUtil`, `NotificationUtil`, `ReportExportUtil`, `SearchUtil`) are currently unreferenced by active controllers.
+- **Direct SQL in Controller (GAP-011):** `ManageFacultyController` executes raw SQL directly for CRUD operations rather than routing through `FacultyDAO`.
+- **No Query Pagination:** Database queries fetch entire tables without `LIMIT`/`OFFSET` pagination, loading full record sets into memory.
+- **No Logging Framework:** Diagnostic outputs use standard `System.out` / `System.err` printing rather than a configurable logging framework (e.g., SLF4J / Logback).
+- **No Accessibility Hooks:** FXML layouts currently omit accessibility screen-reader properties and high-contrast color themes.
+- **No Automated Tests:** The repository currently lacks automated unit, integration, and UI test suites.
 
 ---
 
@@ -312,12 +323,9 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ---
 
-## Acknowledgments
+## Credits
 
-- JavaFX Documentation and Community
-- MySQL and SQLite Communities
-- University project reference and guidance
-- Icons and design inspiration from various open-source projects
+<!-- TODO: image, icon and font sources -->
 
 ---
 

@@ -30,8 +30,7 @@ Download these JAR files and place them in a `lib/` folder:
 2. **jBCrypt** (Password hashing)
    - https://mvnrepository.com/artifact/org.mindrot/jbcrypt
 
-3. **Apache PDFBox** (PDF export)
-   - https://pdfbox.apache.org/download.html
+*(Note: Marksheet export uses the system print dialog via `javafx.print.PrinterJob` rather than Apache PDFBox.)*
 
 ---
 
@@ -61,7 +60,7 @@ Download these JAR files and place them in a `lib/` folder:
 4. **Add Other Dependencies**
    ```
    Build Path → Add External JARs
-   Add jbcrypt.jar and pdfbox.jar
+   Add jbcrypt.jar
    ```
 
 5. **Run Configuration**
@@ -84,7 +83,6 @@ Download these JAR files and place them in a `lib/` folder:
    Add JavaFX SDK lib folder
    Add MySQL connector JAR
    Add jbcrypt JAR
-   Add pdfbox JAR
    ```
 
 3. **Run Configuration**
@@ -128,7 +126,11 @@ Download these JAR files and place them in a `lib/` folder:
 
 ### Option 1: SQLite (Recommended for Development)
 
-No setup required! The application will automatically create `student_db.db` file.
+In the current code, `DatabaseConnection.java` defaults to MySQL if unset. To run with SQLite, set the environment variable:
+```bash
+set DB_TYPE=SQLITE
+```
+(or set `DB_URL=jdbc:sqlite:student_db.db`). The application will then automatically create `student_db.db` file in the project root.
 
 ### Option 2: MySQL
 
