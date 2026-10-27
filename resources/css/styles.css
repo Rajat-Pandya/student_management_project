@@ -124,7 +124,7 @@
    Base Styles
    =========================================== */
 .app, .root {
-    -fx-font-family: -font-family;
+    -fx-font-family: 'Segoe UI', sans-serif;
     -fx-background-color: -bg-secondary;
     -fx-text-fill: -text-primary;
 }
@@ -174,10 +174,9 @@
     -fx-font-size: 14px;
     -fx-font-weight: 500;
     -fx-padding: 10px 20px;
-    -fx-background-radius: -radius-md;
+    -fx-background-radius: 8px;
     -fx-cursor: hand;
     -fx-effect: -shadow-sm;
-    -fx-transition: all 0.2s ease;
 }
 
 .button:hover {
@@ -275,7 +274,7 @@
     -fx-padding: 8px;
     -fx-min-width: 36px;
     -fx-min-height: 36px;
-    -fx-background-radius: -radius-md;
+    -fx-background-radius: 8px;
 }
 
 /* Navigation Buttons */
@@ -285,7 +284,7 @@
     -fx-font-size: 14px;
     -fx-font-weight: 500;
     -fx-padding: 12px 16px;
-    -fx-background-radius: -radius-md;
+    -fx-background-radius: 8px;
     -fx-alignment: CENTER_LEFT;
     -fx-graphic-text-gap: 12px;
 }
@@ -310,11 +309,11 @@
    =========================================== */
 .card {
     -fx-background-color: -bg-elevated;
-    -fx-background-radius: -radius-lg;
-    -fx-padding: -spacing-lg;
+    -fx-background-radius: 12px;
+    -fx-padding: 24px;
     -fx-effect: -shadow-md;
     -fx-border-color: -border-color;
-    -fx-border-radius: -radius-lg;
+    -fx-border-radius: 12px;
     -fx-border-width: 1px;
 }
 
@@ -323,7 +322,7 @@
 }
 
 .card-header {
-    -fx-padding: 0 0 -spacing-md 0;
+    -fx-padding: 0 0 16px 0;
     -fx-border-color: transparent transparent -border-color transparent;
     -fx-border-width: 0 0 1px 0;
 }
@@ -335,17 +334,17 @@
 }
 
 .card-content {
-    -fx-padding: -spacing-md 0 0 0;
+    -fx-padding: 16px 0 0 0;
 }
 
 /* Stat Cards */
 .stat-card {
     -fx-background-color: -bg-elevated;
-    -fx-background-radius: -radius-lg;
-    -fx-padding: -spacing-lg;
+    -fx-background-radius: 12px;
+    -fx-padding: 24px;
     -fx-effect: -shadow-sm;
     -fx-border-color: -border-color;
-    -fx-border-radius: -radius-lg;
+    -fx-border-radius: 12px;
     -fx-border-width: 1px;
     -fx-min-width: 200px;
 }
@@ -379,8 +378,8 @@
 .text-field, .password-field, .text-area {
     -fx-background-color: -bg-primary;
     -fx-border-color: -border-color;
-    -fx-border-radius: -radius-md;
-    -fx-background-radius: -radius-md;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
     -fx-padding: 10px 12px;
     -fx-font-size: 14px;
     -fx-text-fill: -text-primary;
@@ -401,8 +400,8 @@
 .combo-box {
     -fx-background-color: -bg-primary;
     -fx-border-color: -border-color;
-    -fx-border-radius: -radius-md;
-    -fx-background-radius: -radius-md;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
     -fx-padding: 0;
 }
 
@@ -419,7 +418,7 @@
 .combo-box-popup .list-view {
     -fx-background-color: -bg-primary;
     -fx-border-color: -border-color;
-    -fx-border-radius: -radius-md;
+    -fx-border-radius: 8px;
     -fx-effect: -shadow-md;
 }
 
@@ -461,7 +460,7 @@
 .radio-button .radio {
     -fx-background-color: -bg-primary;
     -fx-border-color: -border-dark;
-    -fx-border-radius: -radius-full;
+    -fx-border-radius: 9999px;
 }
 
 .radio-button:selected .radio {
@@ -475,8 +474,8 @@
 .table-view {
     -fx-background-color: -bg-primary;
     -fx-border-color: -border-color;
-    -fx-border-radius: -radius-md;
-    -fx-background-radius: -radius-md;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
     -fx-padding: 0;
 }
 
@@ -553,7 +552,7 @@
 
 .scroll-pane .scroll-bar .thumb {
     -fx-background-color: -gray-400;
-    -fx-background-radius: -radius-full;
+    -fx-background-radius: 9999px;
 }
 
 .scroll-pane .scroll-bar .thumb:hover {
@@ -565,18 +564,18 @@
    =========================================== */
 .progress-bar {
     -fx-background-color: -gray-200;
-    -fx-background-radius: -radius-full;
-    -fx-border-radius: -radius-full;
+    -fx-background-radius: 9999px;
+    -fx-border-radius: 9999px;
 }
 
 .progress-bar .track {
     -fx-background-color: -gray-200;
-    -fx-background-radius: -radius-full;
+    -fx-background-radius: 9999px;
 }
 
 .progress-bar .bar {
     -fx-background-color: -primary-color;
-    -fx-background-radius: -radius-full;
+    -fx-background-radius: 9999px;
 }
 
 .progress-indicator {
@@ -587,8 +586,8 @@
 .spinner {
     -fx-background-color: -bg-primary;
     -fx-border-color: -border-color;
-    -fx-border-radius: -radius-md;
-    -fx-background-radius: -radius-md;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
 }
 
 .spinner:focused {
@@ -600,11 +599,11 @@
    =========================================== */
 .notification {
     -fx-background-color: -bg-elevated;
-    -fx-background-radius: -radius-md;
-    -fx-padding: -spacing-md;
+    -fx-background-radius: 8px;
+    -fx-padding: 16px;
     -fx-effect: -shadow-lg;
     -fx-border-color: -border-color;
-    -fx-border-radius: -radius-md;
+    -fx-border-radius: 8px;
     -fx-border-width: 1px;
 }
 
@@ -632,13 +631,13 @@
    Login Page Styles
    =========================================== */
 .login-container {
-    -fx-background-color: linear-gradient(135deg, -primary-color 0%, -primary-dark 100%);
+    -fx-background-color: linear-gradient(to bottom right, -primary-color 0%, -primary-dark 100%);
 }
 
 .login-card {
     -fx-background-color: -bg-elevated;
-    -fx-background-radius: -radius-xl;
-    -fx-padding: -spacing-xl;
+    -fx-background-radius: 16px;
+    -fx-padding: 32px;
     -fx-effect: -shadow-xl;
     -fx-max-width: 400px;
 }
@@ -666,7 +665,7 @@
 }
 
 .sidebar-header {
-    -fx-padding: -spacing-lg;
+    -fx-padding: 24px;
     -fx-border-color: transparent transparent -border-color transparent;
     -fx-border-width: 0 0 1px 0;
 }
@@ -678,7 +677,7 @@
 }
 
 .sidebar-menu {
-    -fx-spacing: -spacing-xs;
+    -fx-spacing: 4px;
 }
 
 /* ===========================================
@@ -688,8 +687,8 @@
     -fx-background-color: -bg-primary;
     -fx-border-color: transparent transparent -border-color transparent;
     -fx-border-width: 0 0 1px 0;
-    -fx-padding: -spacing-md -spacing-lg;
-    -fx-spacing: -spacing-md;
+    -fx-padding: 16px 24px;
+    -fx-spacing: 16px;
 }
 
 .topbar-title {
@@ -707,23 +706,23 @@
    Dashboard Styles
    =========================================== */
 .dashboard-container {
-    -fx-padding: -spacing-lg;
-    -fx-spacing: -spacing-lg;
+    -fx-padding: 24px;
+    -fx-spacing: 24px;
 }
 
 .dashboard-section {
-    -fx-spacing: -spacing-md;
+    -fx-spacing: 16px;
 }
 
 .stats-grid {
-    -fx-hgap: -spacing-md;
-    -fx-vgap: -spacing-md;
+    -fx-hgap: 16px;
+    -fx-vgap: 16px;
 }
 
 .chart-container {
     -fx-background-color: -bg-elevated;
-    -fx-background-radius: -radius-lg;
-    -fx-padding: -spacing-lg;
+    -fx-background-radius: 12px;
+    -fx-padding: 24px;
     -fx-effect: -shadow-sm;
 }
 
@@ -733,10 +732,10 @@
 .search-bar {
     -fx-background-color: -bg-primary;
     -fx-border-color: -border-color;
-    -fx-border-radius: -radius-full;
-    -fx-background-radius: -radius-full;
+    -fx-border-radius: 9999px;
+    -fx-background-radius: 9999px;
     -fx-padding: 8px 16px;
-    -fx-spacing: -spacing-sm;
+    -fx-spacing: 8px;
 }
 
 .search-bar .text-field {
@@ -747,7 +746,7 @@
 
 .filter-chip {
     -fx-background-color: -gray-100;
-    -fx-background-radius: -radius-full;
+    -fx-background-radius: 9999px;
     -fx-padding: 6px 12px;
     -fx-font-size: 13px;
     -fx-text-fill: -gray-700;
@@ -806,7 +805,7 @@
     -fx-text-fill: white;
     -fx-font-size: 12px;
     -fx-padding: 8px 12px;
-    -fx-background-radius: -radius-md;
+    -fx-background-radius: 8px;
     -fx-effect: -shadow-md;
 }
 
@@ -814,7 +813,7 @@
    Separator
    =========================================== */
 .separator {
-    -fx-padding: -spacing-sm 0;
+    -fx-padding: 8px 0;
 }
 
 .separator .line {
@@ -844,7 +843,7 @@
     -fx-text-fill: -text-primary;
     -fx-min-width: 32px;
     -fx-min-height: 32px;
-    -fx-background-radius: -radius-sm;
+    -fx-background-radius: 6px;
 }
 
 .pagination .number-button:selected {
@@ -858,27 +857,27 @@
    =========================================== */
 .dialog-pane {
     -fx-background-color: -bg-primary;
-    -fx-padding: -spacing-lg;
+    -fx-padding: 24px;
 }
 
 .dialog-pane .header-panel {
     -fx-background-color: -bg-primary;
-    -fx-padding: 0 0 -spacing-md 0;
+    -fx-padding: 0 0 16px 0;
 }
 
 .dialog-pane .content {
-    -fx-padding: -spacing-md 0;
+    -fx-padding: 16px 0;
 }
 
 .dialog-pane .button-bar {
-    -fx-padding: -spacing-md 0 0 0;
+    -fx-padding: 16px 0 0 0;
 }
 
 /* ===========================================
    Status Indicators
    =========================================== */
 .status-dot {
-    -fx-background-radius: -radius-full;
+    -fx-background-radius: 9999px;
     -fx-min-width: 8px;
     -fx-min-height: 8px;
 }
@@ -900,52 +899,16 @@
    =========================================== */
 .fade-in {
     -fx-opacity: 0;
-    -fx-animation: fadeIn 0.3s ease forwards;
 }
 
-@keyframes fadeIn {
-    to {
-        -fx-opacity: 1;
-    }
-}
 
 .slide-up {
     -fx-translate-y: 20px;
     -fx-opacity: 0;
-    -fx-animation: slideUp 0.4s ease forwards;
 }
 
-@keyframes slideUp {
-    to {
-        -fx-translate-y: 0;
-        -fx-opacity: 1;
-    }
-}
 
 /* ===========================================
    Responsive Design
    =========================================== */
-@media screen and (max-width: 1024px) {
-    .sidebar {
-        -fx-min-width: 200px;
-    }
-    
-    .card {
-        -fx-padding: -spacing-md;
-    }
-    
-    .stat-card {
-        -fx-min-width: 160px;
-    }
-}
 
-@media screen and (max-width: 768px) {
-    .sidebar {
-        -fx-min-width: 60px;
-        -fx-max-width: 60px;
-    }
-    
-    .sidebar .label {
-        -fx-visible: false;
-    }
-}

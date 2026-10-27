@@ -1,10 +1,6 @@
 package util;
 
 import dao.AttendanceDAO;
-import dao.StudentDAO;
-import dao.SubjectDAO;
-import dao.FacultyDAO;
-import dao.MarksDAO;
 
 import java.sql.*;
 import java.util.*;
@@ -278,7 +274,7 @@ public class AnalyticsUtil {
                 String grade = rs.getString("grade");
                 int count = rs.getInt("count");
                 
-                result.computeIfAbsent(subject, k -> new HashMap<>()).put(grade, count);
+                result.computeIfAbsent(subject, _ -> new HashMap<>()).put(grade, count);
             }
         }
         return result;
@@ -390,7 +386,7 @@ public class AnalyticsUtil {
         Map<String, Object> report = new HashMap<>();
         report.put("month", month);
         report.put("year", year);
-        report.put("generatedAt", new Date());
+        report.put("generatedAt", new java.util.Date());
         
         try (Connection conn = DatabaseConnection.getConnection()) {
             // New students this month

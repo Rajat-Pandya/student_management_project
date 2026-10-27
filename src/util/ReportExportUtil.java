@@ -1,13 +1,10 @@
 package util;
 
-import model.Student;
-import model.FacultyModel;
-import model.Subject;
-
 import java.io.*;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.Date;
 
 /**
  * Report export utility for generating PDF and CSV reports.

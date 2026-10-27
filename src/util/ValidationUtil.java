@@ -24,7 +24,7 @@ public class ValidationUtil {
     private static final Pattern USERNAME_PATTERN = 
         Pattern.compile("^[A-Za-z0-9_-]{3,50}$");
     
-    private static final Pattern PASSWORD_PATTERN = 
+	private static final Pattern PASSWORD_PATTERN = 
         Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).{8,}$");
     
     // Validation result class

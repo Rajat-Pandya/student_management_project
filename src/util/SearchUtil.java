@@ -138,7 +138,7 @@ public class SearchUtil {
         List<FacultyModel> results = new ArrayList<>();
         
         StringBuilder sql = new StringBuilder(
-            "SELECT DISTINCT f.id, f.name, f.username, f.email, f.phone, f.department " +
+            "SELECT DISTINCT f.id, f.name, f.email, f.username, f.password, f.phone, f.department, f.role " +
             "FROM faculty f WHERE 1=1 "
         );
         List<Object> params = new ArrayList<>();
@@ -469,16 +469,18 @@ public class SearchUtil {
             rs.getInt("attendance")
         );
     }
-    
+
     private static FacultyModel mapResultSetToFaculty(ResultSet rs) throws SQLException {
-        FacultyModel faculty = new FacultyModel();
-        faculty.setId(rs.getInt("id"));
-        faculty.setName(rs.getString("name"));
-        faculty.setUsername(rs.getString("username"));
-        faculty.setEmail(rs.getString("email"));
-        faculty.setPhone(rs.getString("phone"));
-        faculty.setDepartment(rs.getString("department"));
-        return faculty;
+        return new FacultyModel(
+                rs.getInt("id"),
+                rs.getString("name"),
+                rs.getString("email"),
+                rs.getString("username"),
+                rs.getString("password"),
+                rs.getString("phone"),
+                rs.getString("department"),
+                rs.getString("role")
+        );
     }
     
     private static Subject mapResultSetToSubject(ResultSet rs) throws SQLException {
